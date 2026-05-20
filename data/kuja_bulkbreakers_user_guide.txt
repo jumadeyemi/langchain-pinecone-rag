@@ -1,0 +1,662 @@
+KUJA SHOP USER GUIDE FOR BULKBREAKERS
+
+Sign in
+
+Make how-to guides like this one in a snap.
+Create a free Tango account.
+
+BeerTech Africa
+BeerTech Africa
+
+Created Jan 26, 2026
+KUJA SHOP USER GUIDE FOR BULKBREAKERS
+Kuja Shop is a simple and easy app designed for Bulk Breakers and POCs to buy, sell, and manage their business smoothly. 
+
+28
+
+⬛
+How to sign up as a Non-Registered Customer
+11 Steps
+1
+If you are not a registered customer but you want to use Kuja shop to buy and sell products.
+I. You need to provide your information to the admin to be registered.
+II. Then go to Play store and download the Kuja shop app
+III. Click on "No I don't have an account"
+
+If you are not a registered customer but you want to use Kuja shop to buy and sell products.
+I. You need to provide your information to the admin to be registered.
+II. Then go to Play store and download the Kuja shop app
+III. Click on "No I don't have an account"
+
+
+2
+Select phone number
+
+Please note that only one phone number can be used per device to sign up on Kuja Shop.
+
+Select phone number 
+
+
+3
+Country of origin
+
+Click on the drop-down to select your country
+
+Country of origin
+
+
+4
+Enter your phone number
+
+Kindly input your phone number starting with the second digit.
+
+Enter your phone number
+
+
+5
+Account creation
+
+Your phone number is not linked because you are not registered with AB InBev, kindly "click on create account" to continue.
+
+Account creation
+
+
+6
+Store Location
+
+Ensure you are at your store location when creating an account so that your accurate GPS location is captured and we can connect sellers to you.
+
+Store Location
+
+
+7
+Account type
+
+There are two ways you can use Kuja shop, either as a Bulkbreaker or as a POCs,
+
+Bulkbreaker buy from distributor and sell to POCs and customers while
+
+POCS can only buy from bulk breakers and distributors
+
+Account type
+
+
+8
+Fill out the required details
+
+Enter your personal and business details and create password
+
+Fill out the required details
+
+
+9
+Store location II
+
+Kindly confirm that you are at your store location
+
+Store location II
+
+
+10
+Account creation is successful
+
+Account creation is successful
+
+
+11
+Admin access
+
+After successfully creating your account, the admin will review your details and grant you access to Kuja Shop. You will receive a message via your phone number once your account has been approved.
+
+Admin access
+
+
+⬛
+How to sign up as a Bulkbreaker
+6 Steps
+12
+As a Bulkbreaker who do not have an account on Kuja Shop but want to use Kuja Shop, all you need to do is to download the app on Play store
+
+
+As a Bulkbreaker who do not have an account on Kuja Shop but want to use Kuja Shop, all you need to do is to download the app on Play store
+
+
+13
+Select phone number
+
+Please note that only one phone number can be used per device to sign up on Kuja Shop.
+
+Select phone number
+
+
+14
+Select your country and input your phone number
+
+Click on the drop-down to select your country and enter input your phone number starting with the second digit.
+
+Select your country and input your phone number
+
+
+15
+Fill out the required details
+
+I. Input your first name, surname and create password
+
+II. Click on "create account"
+
+Fill out the required details
+
+
+16
+Enter the verification code sent to your phone number
+
+I. Enter the code and click on "Verify"
+
+II. Click on "Resend if you did not get the code
+
+Enter the verification code sent to your phone number
+
+
+17
+Account creation is succesful
+
+Account creation is succesful
+
+
+⬛
+How to Log in/ Set up Store as a Bulkbreaker
+10 Steps
+18
+To log in as a Bulkbreaker
+
+I. After successfully signing in as a Bulkbreaker, the next step is to set up your store so that POCs can buy from you.
+
+II. Select "Yes, I Have an Account"
+
+To log in as a Bulkbreaker
+
+
+19
+Select phone number
+
+Select phone number
+
+
+20
+Select your country, enter your phone number and password.
+
+I. Click on the drop-down to select your country, enter input your phone number starting with the second digit and password.
+
+II. Click on "Forgotten Password" if you can’t remember your password. A code will be sent to you to recover and reset it
+
+Select your country, enter your phone number and password.
+
+
+21
+Store Set Up
+
+After successfully logging in, kindly set up your store so that POCs can buy from you.
+
+Store Set Up
+
+
+22
+Add new products
+
+Use the search bar to find products, and you can add as many products as you want.
+Note: You can only add products that are available in your physical store
+
+Use the "Add" button to add a new product.
+
+Add new products 
+
+
+23
+Input the price and quantity
+
+Once you have added a product, kindly set a price and ensure it does not go below or above the suggested price range.
+
+Input the price and quantity
+
+
+24
+Add more products
+
+You can add as many products as you want, as long as they are available in your physical store
+
+click on "product" to view your product summary or click "done"
+
+Add more products
+
+
+25
+Product Summary
+
+You can delete products or click to confirm your selection.
+
+Product Summary
+
+
+26
+View your products
+
+After clicking "Confirm" your store will be live. You can continue to add more products or view the products already in your store.
+
+View your products
+
+
+27
+Products
+
+You can add more products, view all products you have in stock, and see products that are out of stock.
+
+Products
+
+
+⬛
+Bulkbreakers Homepage
+10 Steps
+I. On the Bulkbreaker home tab, they can see sellers in their area, search for products, view their total orders, check open and completed orders, and filter orders by date.
+
+II. Select the "Sort by" icon to filter items based on your preferred option.
+
+28
+Home Tab
+
+Home Tab
+
+
+29
+Total cost breakdown
+Click on "Total Cost" to see sales breakdown and total cost breakdown
+
+On the "Total cost breakdown" Bulkbreaker can see the items bought and item sold
+
+Total cost breakdown
+Click on "Total Cost" to see sales breakdown and total cost breakdown
+
+
+30
+Sales Breakdown
+
+On the sales breakdown, you can see the total profit and the best-selling products.
+
+Sales Breakdown
+
+
+31
+Search for products, distributor or select the bulkbreaker/distributor you want to buy from
+
+Search for products, distributor or select the bulkbreaker/distributor you want to buy from
+
+
+32
+Select the product you want to buy from the seller and input the quantity
+
+I. Use the "+" button to increase the quantity and the "–" button to decrease the quantity.
+
+II. You can search for products using the search bar.
+
+III. Click on “Order Summary” to view all your orders
+
+Select the product you want to buy from the seller and input the quantity
+
+
+33
+View Order Summary
+
+On the Order Summary, you can delete products you no longer want, increase or reduce the quantity, and click "Confirm" to proceed.
+
+View Order Summary
+
+
+34
+Empties to return
+
+I. Once you confirm your order, you will input the empties you need to return
+
+II. Click on confirm
+
+Empties to return
+
+
+35
+Collect other empties
+
+I. Click on "Collect Empties" if you have any empties you want to return to your seller from previous sales.
+
+II. Click on "proceed"
+
+Collect other empties
+
+
+36
+Summary Breakdown
+
+I. Once you click on "Proceed" you will see your product summary, empties summary, and the total cost.
+
+II. Under "Total Cost" you can view the final amount and the empties that have been deducted.
+
+Summary Breakdown
+
+
+37
+Select how you want to receive orders
+
+I. Select how you would like to receive your order, either through store delivery or pickup.
+
+II. Click on "Yes, Place Order" to confirm your order.
+
+Select how you want to receive orders
+
+
+⬛
+Bulkbreaker Orders Tab
+10 Steps
+I. On the Bulkbreakers Orders tab, they can see placed and received orders.
+
+II. Placed Orders - orders they have placed to distributors.
+
+III. Received Orders - orders they have received from POCs.
+
+38
+Orders
+
+Orders 
+
+
+39
+Received Orders
+
+On the Received Orders page, you can see open and completed orders.
+For open orders, you can view the time and date the Bulkbreaker received the POCs order, as well as when it was confirmed, dispatched, and delivered.
+
+Received Orders
+
+
+40
+To Receive an Order
+
+I. Click on "Accept Order"once the order has been accepted it will move to "Confirmed"
+
+II. Click on "Buyer Details" to view the buyer’s information.
+
+To Receive an Order
+
+
+41
+Order Dispatched
+
+Once you have physically dispatched the order, kindly open your app and mark it as dispatched.
+
+Order Dispatched
+
+
+42
+Order Delivered
+
+Once you have physically delivered the order, kindly open your app and mark it as delivered
+
+Order Delivered
+
+
+43
+Order Completed
+
+Once the order has been completed, kindly open your app and mark it as completed
+
+Order Completed
+
+
+44
+Completed Orders
+
+In the Completed Orders tab, the Bulkbreaker can see the orders they cancelled, rejected, or completed
+
+Completed Orders
+
+
+45
+Placed Orders
+
+I. Placed Orders are orders the Bulkbreaker placed to distributors. The Bulkbreaker can track open and completed orders, including when each order was received, confirmed, dispatched, delivered, and completed.
+
+II.On the completed orders Tab, they can view if an order was cancelled, rejected, or completed.
+
+Placed Orders
+
+
+46
+Completed order
+
+I. On the Completed Orders tab, the Bulkbreaker can see the date and time when their order was completed, cancelled, or rejected.
+
+II. Once they click on "Completed Order" they can choose to reorder.
+
+Completed order
+
+
+47
+Reorder
+
+I. On the Bulkbreaker completed orders, they can click on a previous order to reorder the same products.
+
+II. Once you click on Placed, Completed, Rejected, or Cancelled, you can select "Reorder" to place the same order again.
+
+Reorder 
+
+
+⬛
+Bulkbreaker Product Tab
+7 Steps
+I. On the Product tab, the Bulkbreaker can see all the products they have in stock, including which products are in stock and which are out of stock.
+
+II. They can click "Add" to add a new product or search for products.
+
+III. When a product is out of stock, they can turn it off by clicking the toggle button. When it is back in stock, they can click the product and turn the toggle button on.
+
+48
+Products
+
+Products
+
+
+49
+Product In Stock
+
+When the toggle is on, it shows that the product is in stock and available for sale.”
+
+Product In Stock
+
+
+50
+Product Out of Stock
+
+I. When the toggle is off, it shows that the product is out of stock
+
+II. You can click on the toggle button to turn it on when you receive the product or when it is back in stock.
+
+III. click on "Add" to add new product
+
+Product Out of Stock
+
+
+51
+Add new products
+
+Use the search bar to find products, and you can add as many products as you want.
+Note: You can only add products that are available in your physical store
+
+Use the "Add" button to add a new product.
+
+Add new products
+
+
+52
+Input the quantity and price
+
+Once you have added a product, kindly set a price and ensure it does not go below or above the suggested price range.
+
+Input the quantity and price
+
+
+53
+View product summary
+
+
+You can delete products or click to confirm your selection.
+
+View product summary
+
+
+54
+Store is live
+
+After clicking "Confirm" your store will be live. You can continue to add more products or view the products already in your store.
+
+Store is live
+
+
+⬛
+Bulkbreaker Account Tab
+15 Steps
+On the Bulkbreaker Account tab, they can view their profile, Awuuf points, reviews, support, and legal terms. They can also sign out.
+
+55
+Account
+
+On the Profile tab, the Bulkbreaker can see their business name, email address, phone number, WhatsApp number and address.
+
+Account
+
+
+56
+Reviews
+
+Once the Bulkbreaker click on Reviews, they will see the reviews and ratings the POCS left for them
+
+Reviews
+
+
+57
+View Awuuf points
+
+I. Awuuf Points are activated during ongoing promotions. Each drink has a specific number of points per case. The Bulkbreaker earns points based on the number of cases sold.
+
+II. In the Awuuf Points section, the Bulkbreaker can click "View" to check their points balance, learn how to earn points, and see their redemption history.
+
+View Awuuf points
+
+
+58
+Awuuf point balance
+
+I. The Awuuf point balance shows the total points the Bulkbreaker has earned
+
+II. Click on "How to earn"
+
+Awuuf point balance
+
+
+59
+How to earn points
+
+I. Bulkbreakers earn points by selling drinks on Kuja Shop. Each case carries a specific number of points, and the more cases sold, the more points they accumulate.
+
+How to earn points
+
+
+60
+How to redeem rewards
+
+I. To redeem a reward, select the gift you want to redeem and enter the quantity.
+
+II. The Bulkbreaker can see the number of points required to redeem the selected gift.
+
+II. Click on "Redeem" or View awuuf points"
+
+How to redeem rewards
+
+
+61
+View Selected Awuuf items
+
+You can click to delete the gifts you don’t want or click on "Redeem" to proceed.
+
+View Selected Awuuf items
+
+
+62
+Redeemed request
+
+I. Once the Bulkbreaker clicks "Redeem" the admin will receive a request to approve the request and deliver it.
+
+II. To track your redeemed items, click on "Track Items"
+
+Redeemed request
+
+
+63
+Track your redeemed items
+
+Track your redeemed items
+
+
+64
+View your tracking list
+
+I. Here, you can view all the items you are tracking, including the date, time, and number of items redeemed.
+
+II. Click on any item to view more details.
+
+View your tracking list
+
+
+65
+Redeemed Items
+
+
+I. As a Bulkbreaker, you can view the status of your redeemed items, whether your request has been approved, is still pending or has been delivered.
+
+Redeemed Items
+
+
+66
+Item Status
+
+
+I. Once your awuuf items have been approved by the admin and delivered, open your Kuja Shop and click "Delivered"
+
+Item Status
+
+
+67
+Awuuf point history
+
+I. The History shows the point history and redeemed history and
+
+II. Click on "History"
+
+Awuuf point history
+
+
+68
+Points history
+
+On the Points History page, the Bulkbreaker can see all the points they have earned and the dates they were earned.
+
+Points history
+
+
+69
+Redeemed history
+
+On the Points History page, the Bulkbreaker can see all the points they have redeemed and the dates they were redeemed.
+
+Redeemed history
+
+
+Well done!
+Create how-to guides like this in a snap. Get Tango now.
+
+Get Tango

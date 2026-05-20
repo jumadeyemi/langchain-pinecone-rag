@@ -30,7 +30,7 @@ retriever = vector_store.as_retriever(
     search_type="similarity_score_threshold",
     search_kwargs={"k": 5, "score_threshold": 0.5},
 )
-results = retriever.invoke("what is retrieval augmented generation?")
+results = retriever.invoke("what does the distributor module show in KUJA VERSION 3.0 admin page")
 
 # show results
 print("RESULTS:")

@@ -1,0 +1,607 @@
+KUJA VERSION 3.0 USER GUIDE FOR DISTRIBUTORS
+
+Sign in
+
+Make how-to guides like this one in a snap.
+Create a free Tango account.
+
+BeerTech Africa
+BeerTech Africa
+
+Created Oct 23, 2025
+KUJA VERSION 3.0 USER GUIDE FOR DISTRIBUTORS
+Kuja V3 is a smarter, faster, and more intuitive version of the KUJA platform, designed to improve how distributors and ABI staff work every day.
+
+1734
+
+afr-map-kuja-san-qa-appsrvc.azurewebsites.net
+Backoffice Access
+
+Open
+1 Step
+1
+How to sign up or sign in
+
+
+As an external user, once you sign up using your non-official email, an Admin assigns you a role.
+
+As an internal user, once you sign up using your official email, an Admin also assigns you a role
+
+How to sign up or sign in
+
+
+afr-map-kuja-san-qa-appsrvc.azurewebsites.net
+Inventory Set up
+
+Open
+4 Steps
+2
+Click tab to set up
+
+
+As a newly registered distributor, you need to set up your KUJA inventory to reflect your physical stock at your warehouse.
+
+A physical stock count needs to done at the warehouse.
+
+Once an accurate physical stock count at the warehouse has been done, the values are registered into the system.
+
+Click tab to set up
+
+
+3
+Input Products
+
+
+Input Products
+
+
+4
+Add Empties
+
+
+ Add Empties
+
+
+5
+Complete setup
+
+
+Complete setup
+
+
+afr-map-kuja-san-qa-appsrvc.azurewebsites.net
+Daily Stock Count
+
+Open
+5 Steps
+6
+Stock Match
+
+
+Every morning, a system pop-up prompts distributors to perform a physical stock count, verify it against system records, and resolve any discrepancies.
+
+In cases where physical stock matches with system stock, the distributor clicks on "stock Matches"
+
+If there are discrepancies, the distributor adjusts system stock to reflect the physical stock counted.
+
+Stock Match
+
+
+7
+Resolving Discrepancy
+
+
+Resolving Discrepancy
+
+
+8
+Resolving Discrepancy II
+
+
+ Resolving Discrepancy II
+
+
+9
+Resolving Discrepancy III
+
+
+Resolving Discrepancy III
+
+
+10
+Save Changes
+
+
+Save Changes
+
+
+afr-map-kuja-san-qa-appsrvc.azurewebsites.net
+"Home" Module
+
+Open
+1 Step
+11
+View activities in this module
+
+
+The "Home" module gives an overview of;
+
+The distributor's business performance
+
+Some frequently used tabs
+
+Updates on low stock or products that are out of stock
+
+Insights that can help the distributor grow their business... etc
+
+View activities in this module
+
+
+afr-map-kuja-san-qa-appsrvc.azurewebsites.net
+"Orders" Module
+
+Open
+12 Steps
+12
+View activities in this module
+
+
+The "Orders" modules is divided into 2 -
+
+Capturing orders raised by customers from other applications
+
+Capturing walk-in sales from customers who walk into the warehouse to buy.
+
+The Orders Module shows -
+
+a list of all open, assigned, accepted, completed or rejected orders.
+
+the details of the orders raised, including the details of the customer that raised the order, the date and time it was raised, the order source and delivery method, etc.
+
+how walk-in sales can be captured either to a registered on non-registered customer.
+
+View activities in this module
+
+
+13
+Open Orders
+
+
+I. This chart shows how the distributor or back office can edit or update a customer’s order, including adding more products before it is processed.
+
+II. Select the order you want to update
+
+III. Click on the drop down
+
+Open Orders
+
+
+14
+Update Order I
+
+
+I. Use the "+" and "-" button to add or reduce the quantity of the customer's order
+
+II. You can also add new products
+
+III. Click on "Update Order" when you are done editing the order
+
+Update Order I
+
+
+15
+Update Order II
+
+
+Click on "Yes, update" to confirm
+
+Update Order II
+
+
+16
+Assign order I
+
+
+Assign order I
+
+
+17
+Assign order II
+
+
+Assign order II
+
+
+18
+Revert Order I
+
+
+This Chart shows how you can revert an order you assigned to a driver to open order.
+
+Go to the assigned orders and select the order you want to revert
+
+Revert Order I
+
+
+19
+Revert II
+
+
+Revert II
+
+
+20
+Capture Walk-in sales I
+
+
+This chart shows how to capture sales to registered customers.
+
+Registered customers are customers who have a unique code with the business, and have their details registered in KUJA.
+
+Capture Walk-in sales I
+
+
+21
+Capture Walk-in sales II
+
+
+This chart shows how to capture sales to non-registered customers.
+
+Non-Registered customers are customers who do not have a unique code with the business, and do not have their details in the company's database.
+
+Empties are captured and receipt are generated same way as to registered customers.
+
+Capture Walk-in sales II
+
+
+22
+Capture Empties Returned
+
+
+Capture Empties Returned
+
+
+23
+Generate receipt
+
+
+Generate receipt
+
+
+afr-map-kuja-san-qa-appsrvc.azurewebsites.net
+"Products" Module
+
+Open
+19 Steps
+24
+View activities in this module
+
+
+The "Products" module shows;
+
+The warehouse inventory level - all available ABinBev products, all available Marketplace products and all empties that a distributor has in his/her warehouse.
+
+The details of these products such as the recommended price, quantity available etc.
+
+A tab used to capture newly received products.
+
+A tab to capture products or empties returned by a customer after purchase is captured.
+
+View activities in this module
+
+
+25
+Process returns (Products)
+
+
+Process returns (Products)
+
+
+26
+Process returns (Empties)
+
+
+Process returns (Empties)
+
+
+27
+Receiving New Stock I
+
+
+This chart explains how to receive ABinBev products
+
+Receiving New Stock I
+
+
+28
+Process Invoice
+
+
+Process Invoice
+
+
+29
+Raising a Claim
+
+
+Raising a Claim
+
+
+30
+Raise Claim - Products
+
+
+Raise Claim - Products
+
+
+31
+Upload Product Evidence
+
+
+Upload Product Evidence
+
+
+32
+Raise claim - Empties
+
+
+Raise claim - Empties
+
+
+33
+Upload Empties Evidence
+
+
+Upload Empties Evidence
+
+
+34
+Receive New Stock II
+
+
+This chart explains how to receive Non-ABinBev/Marketplace products
+
+Receive New Stock II
+
+
+35
+Select Marketplace Product
+
+
+Select Marketplace Product
+
+
+36
+Input Details
+
+
+Input Details
+
+
+37
+Receive New Stock III
+
+
+This chart explains how to receive Marketplace products not yet registered in the system.
+
+Receive New Stock III
+
+
+38
+New Marketplace Product
+
+
+New Marketplace Product
+
+
+39
+Create new SKU
+
+
+Create new SKU
+
+
+40
+Input details of SKU
+
+
+Input details of SKU
+
+
+41
+Input other details and save
+
+
+Input other details and save
+
+
+42
+View Marketplace product
+
+
+View Marketplace product
+
+
+afr-map-kuja-san-qa-appsrvc.azurewebsites.net
+"Van Warehouse" Module
+
+Open
+6 Steps
+43
+Activities in this Module
+
+
+The "Van Warehouse" module shows
+
+All van inventory - This shows registered drivers and the stock in their mobile inventory
+
+A tab for replenishing drivers mobile inventory
+
+All van transactions and replenishment history
+
+Details of all drivers registered with the distributor.
+
+Activities in this Module
+
+
+44
+Van replenishment
+
+
+Van replenishment
+
+
+45
+Confirm replenishment
+
+
+Confirm replenishment
+
+
+46
+Assigned Order History
+
+
+Assigned Order History
+
+
+47
+Van Replenishment History
+
+
+Van Replenishment History
+
+
+48
+Drivers' Details
+
+
+Drivers' Details
+
+
+afr-map-kuja-san-qa-appsrvc.azurewebsites.net
+"Finance" Module
+
+Open
+10 Steps
+49
+View activities in this module
+
+
+The "Finance" module shows...
+
+Quick actions tabs, profit and loss summaries and customer balances.
+
+Tabs to record past sales, purchases and expenses.
+
+A tab to capture claims and see status of the claims.
+
+View activities in this module
+
+
+50
+Adding New Records
+
+
+Adding New Records
+
+
+51
+Input the required details
+
+
+Input the required details
+
+
+52
+Save record
+
+
+Save record
+
+
+53
+Customer balances
+
+
+Customer balances
+
+
+54
+Collect payment
+
+
+Collect payment
+
+
+55
+Input amount
+
+
+Input amount
+
+
+56
+Confirm payment
+
+
+Confirm payment
+
+
+57
+Claims
+
+
+Claims
+
+
+58
+Input details and Save
+
+
+Input details and Save
+
+
+afr-map-kuja-san-qa-appsrvc.azurewebsites.net
+"Settings" Module
+
+Open
+4 Steps
+59
+Activities in this module
+
+
+The "Settings" module shows...
+
+The details of the distributor and the users assigned to the distributor's account.
+
+A tab used for inviting new users.
+
+Activities in this module
+
+
+60
+Input email address
+
+
+Input email address
+
+
+61
+Select permissions
+
+
+Select permissions
+
+
+62
+Send invitation
+
+
+Send invitation
+
+
+Well done!
+Create how-to guides like this in a snap. Get Tango now.
+
+Get Tango

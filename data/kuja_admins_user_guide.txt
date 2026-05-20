@@ -1,0 +1,354 @@
+KUJA VERSION 3.0 USER GUIDE FOR ADMINS
+
+Sign in
+
+Make how-to guides like this one in a snap.
+Create a free Tango account.
+
+BeerTech Africa
+BeerTech Africa
+
+Created Oct 22, 2025
+KUJA VERSION 3.0 USER GUIDE FOR ADMINS
+Kuja V3 is a smarter, faster, and more intuitive version of the KUJA platform, designed to improve how distributors and ABI staff work every day.
+
+90
+
+afr-map-kuja-san-qa-appsrvc.azurewebsites.net
+Admin Access
+
+Open
+1 Step
+1
+How to sign up or sign in
+
+
+As an internal user, once you sign up using your official email, an Admin assigns you a role.
+
+As an external user, once you sign up using your non-official email, an Admin also assigns you a role.
+
+How to sign up or sign in
+
+
+afr-map-kuja-san-qa-appsrvc.azurewebsites.net
+"Home" Module
+
+Open
+1 Step
+2
+View activities in this Module
+
+
+The "Home" module gives an overview of;
+
+Some frequently used tabs
+
+Summary of country numbers
+
+Updates on new signs ups, etc.
+
+View activities in this Module
+
+
+afr-map-kuja-san-qa-appsrvc.azurewebsites.net
+"Distributors" Module
+
+Open
+3 Steps
+3
+View activities in this Module
+
+
+The "Distributors" module shows
+
+A list of all Distributors registered in KUJA.
+
+A tab where new distributors can be added/created.
+
+A click to view a distributor's account.
+
+A status tab to filter status.
+
+View activities in this Module
+
+
+4
+Add a new distributor
+
+
+Add a new distributor
+
+
+5
+Fill in the right details and save
+
+
+Fill in the right details and save
+
+
+afr-map-kuja-san-qa-appsrvc.azurewebsites.net
+"Users" Module
+
+Open
+5 Steps
+6
+View activities in this Module
+
+
+The "Users" Module
+
+Shows a list of all users assigned with specific roles to specific applications in the Ecosystem.
+
+Shows details of each users, and how to suspend access or delete user's access.
+
+Shows how an internal user can be invited to have access to KUJA.
+
+View activities in this Module
+
+
+7
+Invite a new user
+
+
+Invite a new user
+
+
+8
+Input user's details
+
+
+Input user's details
+
+
+9
+Click to Send
+
+
+Click to Send
+
+
+10
+Confirm invite request sent
+
+
+Confirm invite request sent
+
+
+afr-map-kuja-san-qa-appsrvc.azurewebsites.net
+"Pricing" Module
+
+Open
+5 Steps
+11
+View activities in this Module
+
+
+The "Pricing" Module
+
+Shows the cost price, resell price and retail price of all products registered in KUJA.
+
+Shows how prices can be updated for one, multiple, or all distributors.
+
+Allows Admins to edit product prices individually or through bulk upload.
+
+View activities in this Module
+
+
+12
+Update price for a single distributor
+
+
+Update price for a single distributor
+
+
+13
+Update price for multiple distributors
+
+
+Update price for multiple distributors
+
+
+14
+Update price for all distributors
+
+
+Update price for all distributors
+
+
+15
+Price Update Bulk Upload
+
+
+Price Update Bulk Upload
+
+
+afr-map-kuja-san-qa-appsrvc.azurewebsites.net
+"Customers" Module
+
+Open
+5 Steps
+16
+View activities in this Module
+
+
+The "Customers" Module
+
+Shows a list of all customers registered with the business and assigned to distributors.
+
+Show the details of these customers
+
+Has a tab that allows new customers to be added into the system
+
+View activities in this Module
+
+
+17
+Add a single customer
+
+
+Add a single customer
+
+
+18
+Fill in the right details and save
+
+
+Fill in the right details and save
+
+
+19
+Add multiple customers
+
+
+Add multiple customers
+
+
+20
+Customer Bulk Upload
+
+
+Customer Bulk Upload
+
+
+afr-map-kuja-san-qa-appsrvc.azurewebsites.net
+"Products" Module
+
+Open
+7 Steps
+21
+View activities in this Module
+
+
+The "Products" Module
+
+Show a list of all registered Products (in-house and marketplace) and Empties.
+
+Show the details of these products including the recommended prices.
+
+Has a tab that allows new products to be added into the system
+
+View activities in this Module
+
+
+22
+Add a new empty
+
+
+For every in-house product that has a corresponding empty, the user needs to confirm the empty has been registered in the system already.
+
+If the corresponding empty for that product has not been registered, the user needs to register the empty before registering the product.
+
+Every product must be linked to its corresponding empty.
+
+Add a new empty
+
+
+23
+Fill in the right details and save
+
+
+Fill in the right details and save
+
+
+24
+Add a new product
+
+
+Add a new product
+
+
+25
+Fill in the right details and save
+
+
+Fill in the right details and save
+
+
+26
+Products Bulk Upload
+
+
+Right click on "Bulk upload"
+
+Products Bulk Upload
+
+
+27
+Upload and Save
+
+
+Upload and Save
+
+
+afr-map-kuja-san-qa-appsrvc.azurewebsites.net
+"New Signups" Module
+
+Open
+5 Steps
+28
+View activities in this Module
+
+
+The "New Signups" Module
+
+Shows a list of users who have signed up but are yet to be given access or assigned a role.
+
+Has a search bar to narrow finding a new user who has signed up.
+
+Has dropdown tabs to narrow search by application used to sign up, the user type or by date.
+
+View activities in this Module
+
+
+29
+Assigning a backoffice role
+
+
+Assigning a backoffice role
+
+
+30
+Approve/Decline signup
+
+
+Approve/Decline signup
+
+
+31
+Assigning an Internal user role
+
+
+Assigning an Internal user role
+
+
+32
+Assign role and Approve signup
+
+
+Assign role and Approve signup
+
+
+Well done!
+Create how-to guides like this in a snap. Get Tango now.
+
+Get Tango

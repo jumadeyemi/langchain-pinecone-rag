@@ -11,8 +11,8 @@ from langchain_pinecone import PineconeVectorStore
 from langchain_openai import OpenAIEmbeddings
 from langchain_core.documents import Document
 
-#documents
-from langchain_community.document_loaders import PyPDFDirectoryLoader
+#documents (load .txt files from data/)
+import glob
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 load_dotenv() 
@@ -43,10 +43,13 @@ embeddings = OpenAIEmbeddings(model="text-embedding-3-large",api_key=os.environ.
 vector_store = PineconeVectorStore(index=index, embedding=embeddings)
 
 
-# loading the PDF document
-loader = PyPDFDirectoryLoader("documents/")
-
-raw_documents = loader.load()
+# loading all .txt files from the data/ folder
+txt_paths = sorted(glob.glob("data/*.txt"))
+raw_documents = []
+for p in txt_paths:
+    with open(p, "r", encoding="utf-8") as f:
+        text = f.read()
+    raw_documents.append(Document(page_content=text, metadata={"source": p}))
 
 # splitting the document
 text_splitter = RecursiveCharacterTextSplitter(
