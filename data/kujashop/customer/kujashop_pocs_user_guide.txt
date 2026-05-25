@@ -272,7 +272,7 @@ II. Click on "Yes, Place Order" to confirm your order.
 Select how you want to receive orders
 
 
-⬛
+
 POCs Orders Tab
 5 Steps
 I. On the POCs Orders tab, they can only see placed orders.

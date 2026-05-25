@@ -19,13 +19,15 @@ load_dotenv()
 # =========================
 # INITIALIZE PINECONE
 # =========================
-pc = Pinecone(api_key=os.environ.get("PINECONE_API_KEY"))
+pc = Pinecone(
+    api_key=os.environ.get("PINECONE_API_KEY")
+)
 
 index_name = os.environ.get("PINECONE_INDEX_NAME")
 index = pc.Index(index_name)
 
 # =========================
-# EMBEDDINGS + VECTOR STORE
+# EMBEDDINGS
 # =========================
 embeddings = OpenAIEmbeddings(
     model="text-embedding-3-large",
@@ -38,12 +40,15 @@ vector_store = PineconeVectorStore(
 )
 
 # =========================
-# PLATFORM SELECTION
+# TEST PARAMETERS
 # =========================
 platform = "kujashop"
+role = "customer"
+
+query = "How do I place an order?"
 
 # =========================
-# CREATE RETRIEVER
+# RETRIEVER
 # =========================
 retriever = vector_store.as_retriever(
     search_type="similarity_score_threshold",
@@ -51,16 +56,15 @@ retriever = vector_store.as_retriever(
         "k": 5,
         "score_threshold": 0.6,
         "filter": {
-            "platform": platform
+            "platform": platform,
+            "role": role
         }
     },
 )
 
 # =========================
-# QUERY
+# SEARCH
 # =========================
-query = "what does the distributor module show in admin page"
-
 results = retriever.invoke(query)
 
 # =========================
@@ -72,10 +76,15 @@ if not results:
     print("No relevant documents found.")
 
 else:
+
     for i, res in enumerate(results, start=1):
 
         print(f"RESULT {i}")
         print(f"Platform: {res.metadata.get('platform')}")
+        print(f"Role: {res.metadata.get('role')}")
         print(f"Source: {res.metadata.get('source')}")
+
+        print("\nCONTENT:\n")
         print(res.page_content[:500])
+
         print("\n" + "=" * 80 + "\n")

@@ -24,14 +24,22 @@ load_dotenv()
 # =========================
 # INITIALIZE PINECONE
 # =========================
-pc = Pinecone(api_key=os.environ.get("PINECONE_API_KEY"))
+pc = Pinecone(
+    api_key=os.environ.get("PINECONE_API_KEY")
+)
 
 index_name = os.environ.get("PINECONE_INDEX_NAME")
 
-# Create index if it does not exist
-existing_indexes = [index_info["name"] for index_info in pc.list_indexes()]
+# =========================
+# CREATE INDEX IF NOT EXISTS
+# =========================
+existing_indexes = [
+    index_info["name"]
+    for index_info in pc.list_indexes()
+]
 
 if index_name not in existing_indexes:
+
     pc.create_index(
         name=index_name,
         dimension=3072,
@@ -45,6 +53,9 @@ if index_name not in existing_indexes:
     while not pc.describe_index(index_name).status["ready"]:
         time.sleep(1)
 
+# =========================
+# CONNECT TO INDEX
+# =========================
 index = pc.Index(index_name)
 
 # =========================
@@ -65,31 +76,35 @@ vector_store = PineconeVectorStore(
 # =========================
 raw_documents = []
 
-# Finds all txt files inside subfolders
-txt_paths = glob.glob("data/**/*.txt", recursive=True)
+txt_paths = glob.glob(
+    "data/**/*.txt",
+    recursive=True
+)
 
 for path in txt_paths:
 
-    # Convert path to Path object
     path_obj = Path(path)
 
-    # Extract platform name from folder structure
     # Example:
-    # data/kujashop/file.txt
-    # -> kujashop
-    platform = path_obj.parts[1]
+    # data/kujashop/customer/file.txt
+    #
+    # parts:
+    # [data, kujashop, customer, file.txt]
 
-    # Read file
+    platform = path_obj.parts[1]
+    role = path_obj.parts[2]
+    source = path_obj.name
+
     with open(path, "r", encoding="utf-8") as f:
         text = f.read()
 
-    # Create document with metadata
     raw_documents.append(
         Document(
             page_content=text,
             metadata={
-                "source": str(path_obj.name),
-                "platform": platform
+                "platform": platform,
+                "role": role,
+                "source": source
             }
         )
     )
@@ -106,14 +121,19 @@ text_splitter = RecursiveCharacterTextSplitter(
     is_separator_regex=False,
 )
 
-documents = text_splitter.split_documents(raw_documents)
+documents = text_splitter.split_documents(
+    raw_documents
+)
 
 print(f"Created {len(documents)} chunks.")
 
 # =========================
 # GENERATE IDS
 # =========================
-ids = [f"doc_{i}" for i in range(len(documents))]
+ids = [
+    f"doc_{i}"
+    for i in range(len(documents))
+]
 
 # =========================
 # UPSERT DOCUMENTS

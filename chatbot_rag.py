@@ -10,8 +10,10 @@ from pinecone import Pinecone
 
 # LangChain
 from langchain_pinecone import PineconeVectorStore
-from langchain_openai import OpenAIEmbeddings
-from langchain_openai import ChatOpenAI
+from langchain_openai import (
+    OpenAIEmbeddings,
+    ChatOpenAI
+)
 
 from langchain_core.messages import (
     HumanMessage,
@@ -36,15 +38,36 @@ st.set_page_config(
 st.title("🤖 BEERTECH AI SUPPORT ASSISTANT")
 
 # =========================
-# PLATFORM SELECTOR
+# PLATFORM + ROLE MAPPING
 # =========================
+platform_roles = {
+    "kujashop": [
+        "customer",
+        "bdr"
+    ],
+    "kujaexpress": [
+        "stockist"
+    ],
+    "kujadrivers": [
+        "driver"
+    ]
+}
+
+# =========================
+# SIDEBAR
+# =========================
+st.sidebar.header("Configuration")
+
+# Platform selector
 platform = st.sidebar.selectbox(
     "Select Platform",
-    [
-        "kujaexpress",
-        "kujashop",
-        "kujadrivers"
-    ]
+    list(platform_roles.keys())
+)
+
+# Role selector
+role = st.sidebar.selectbox(
+    "Select Role",
+    platform_roles[platform]
 )
 
 # =========================
@@ -78,33 +101,77 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 
 # =========================
+# RESET CHAT IF CONTEXT CHANGES
+# =========================
+if "current_platform" not in st.session_state:
+    st.session_state.current_platform = platform
+
+if "current_role" not in st.session_state:
+    st.session_state.current_role = role
+
+# Clear chat if platform changes
+if (
+    st.session_state.current_platform != platform
+    or
+    st.session_state.current_role != role
+):
+
+    st.session_state.messages = []
+
+    st.session_state.current_platform = platform
+    st.session_state.current_role = role
+
+# =========================
+# DISPLAY ACTIVE CONTEXT
+# =========================
+st.sidebar.markdown("---")
+
+st.sidebar.success(
+    f"""
+    Active Context:
+    
+    Platform: {platform}
+    
+    Role: {role}
+    """
+)
+
+# =========================
 # DISPLAY CHAT HISTORY
 # =========================
 for message in st.session_state.messages:
 
     if isinstance(message, HumanMessage):
+
         with st.chat_message("user"):
             st.markdown(message.content)
 
     elif isinstance(message, AIMessage):
+
         with st.chat_message("assistant"):
             st.markdown(message.content)
 
 # =========================
 # USER INPUT
 # =========================
-prompt = st.chat_input("Ask a question about the platform...")
+prompt = st.chat_input(
+    f"Ask a question as a {role} on {platform}..."
+)
 
 # =========================
 # HANDLE USER INPUT
 # =========================
 if prompt:
 
-    # Display user message
+    # =========================
+    # DISPLAY USER MESSAGE
+    # =========================
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    # Save user message
+    # =========================
+    # SAVE USER MESSAGE
+    # =========================
     st.session_state.messages.append(
         HumanMessage(prompt)
     )
@@ -126,7 +193,8 @@ if prompt:
             "k": 5,
             "score_threshold": 0.6,
             "filter": {
-                "platform": platform
+                "platform": platform,
+                "role": role
             }
         },
     )
@@ -143,7 +211,8 @@ if prompt:
 
         result = (
             f"I could not find relevant information "
-            f"for '{platform}' in the knowledge base."
+            f"for role '{role}' "
+            f"on platform '{platform}'."
         )
 
     else:
@@ -152,33 +221,44 @@ if prompt:
         # PREPARE CONTEXT
         # =========================
         docs_text = "\n\n".join(
-            doc.page_content for doc in docs
+            doc.page_content
+            for doc in docs
         )
 
         # =========================
         # SYSTEM PROMPT
         # =========================
         system_prompt = f"""
-        You are a support assistant for {platform}.
+You are a support assistant for:
 
-        Answer ONLY using the provided context.
+Platform: {platform}
+Role: {role}
 
-        If the answer is not in the context,
-        say you could not find the information
-        in the knowledge base.
+You MUST answer ONLY using the provided context.
 
-        Be concise, clear, and accurate.
+Do NOT provide answers outside the context.
 
-        If applicable, provide step-by-step guidance.
+If the answer is not found in the context,
+say you could not find the information
+in the knowledge base.
 
-        CONTEXT:
-        {docs_text}
-        """
+Tailor your response specifically
+for the role: {role}.
+
+Be concise, accurate, and helpful.
+
+If applicable, provide step-by-step guidance.
+
+CONTEXT:
+{docs_text}
+"""
 
         # =========================
-        # LAST FEW MESSAGES ONLY
+        # RECENT CHAT HISTORY
         # =========================
-        recent_messages = st.session_state.messages[-6:]
+        recent_messages = (
+            st.session_state.messages[-6:]
+        )
 
         # =========================
         # CREATE MESSAGE LIST
@@ -202,7 +282,9 @@ if prompt:
 
         st.markdown(result)
 
-        # Show sources
+        # =========================
+        # DISPLAY SOURCES
+        # =========================
         if docs:
 
             st.markdown("---")
@@ -212,11 +294,24 @@ if prompt:
 
             for doc in docs:
 
-                source = doc.metadata.get("source")
+                source = doc.metadata.get(
+                    "source"
+                )
+
+                doc_platform = doc.metadata.get(
+                    "platform"
+                )
+
+                doc_role = doc.metadata.get(
+                    "role"
+                )
 
                 if source not in shown_sources:
 
-                    st.caption(f"📄 {source}")
+                    st.caption(
+                        f"📄 {source} "
+                        f"({doc_platform} | {doc_role})"
+                    )
 
                     shown_sources.add(source)
 

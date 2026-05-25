@@ -1,28 +1,55 @@
-
+# =========================
+# IMPORTS
+# =========================
 import os
-from dotenv import load_dotenv
+from enum import Enum
+from typing import List
 
+from dotenv import load_dotenv
 
 from fastapi import FastAPI
 from pydantic import BaseModel
 
+# Pinecone
 from pinecone import Pinecone
 
+# LangChain
 from langchain_pinecone import PineconeVectorStore
-from langchain_openai import OpenAIEmbeddings, ChatOpenAI
-from langchain_core.messages import SystemMessage, HumanMessage
+from langchain_openai import (
+    OpenAIEmbeddings,
+    ChatOpenAI
+)
+
+from langchain_core.messages import (
+    SystemMessage,
+    HumanMessage
+)
 
 # =========================
-# INIT
+# LOAD ENV VARIABLES
 # =========================
 load_dotenv()
 
-app = FastAPI(title="Kuja RAG Support API")
+# =========================
+# FASTAPI APP
+# =========================
+app = FastAPI(
+    title="Kuja AI Support API"
+)
 
-pc = Pinecone(api_key=os.environ.get("PINECONE_API_KEY"))
+# =========================
+# PINECONE
+# =========================
+pc = Pinecone(
+    api_key=os.environ.get("PINECONE_API_KEY")
+)
+
 index_name = os.environ.get("PINECONE_INDEX_NAME")
 index = pc.Index(index_name)
 
+# =========================
+# EMBEDDINGS
+# =========================
 embeddings = OpenAIEmbeddings(
     model="text-embedding-3-large",
     api_key=os.environ.get("OPENAI_API_KEY")
@@ -33,74 +60,113 @@ vector_store = PineconeVectorStore(
     embedding=embeddings
 )
 
+# =========================
+# LLM
+# =========================
 llm = ChatOpenAI(
     model="gpt-4o",
     temperature=0
 )
 
 # =========================
-# REQUEST SCHEMA
+# ENUMS
+# =========================
+class Platform(str, Enum):
+    kujashop = "kujashop"
+    kujaexpress = "kujaexpress"
+    kujadrivers = "kujadrivers"
+
+
+class Role(str, Enum):
+    customer = "customer"
+    bdr = "bdr"
+    stockist = "stockist"
+    driver = "driver"
+
+# =========================
+# REQUEST MODEL
 # =========================
 class ChatRequest(BaseModel):
     query: str
-    platform: str   # kujaexpress | kujashop | kujadrivers
+    platform: Platform
+    role: Role
 
 # =========================
-# RESPONSE SCHEMA
+# RESPONSE MODEL
 # =========================
 class ChatResponse(BaseModel):
     answer: str
     platform: str
-    sources: list[str]
+    role: str
+    sources: List[str]
 
 # =========================
-# ENDPOINT
+# CHAT ENDPOINT
 # =========================
-@app.post("/chat", response_model=ChatResponse)
+@app.post(
+    "/v1/chat",
+    response_model=ChatResponse
+)
 def chat(request: ChatRequest):
 
-    # -------------------------
-    # RETRIEVER (platform filter)
-    # -------------------------
+    # =========================
+    # RETRIEVER
+    # =========================
     retriever = vector_store.as_retriever(
         search_type="similarity_score_threshold",
         search_kwargs={
             "k": 5,
             "score_threshold": 0.6,
             "filter": {
-                "platform": request.platform
+                "platform": request.platform,
+                "role": request.role
             }
         },
     )
 
-    docs = retriever.invoke(request.query)
+    docs = retriever.invoke(
+        request.query
+    )
 
-    # -------------------------
-    # HANDLE NO RESULTS
-    # -------------------------
+    # =========================
+    # NO RESULTS
+    # =========================
     if not docs:
+
         return ChatResponse(
-            answer=f"No relevant information found for {request.platform}.",
+            answer=(
+                f"No relevant information found "
+                f"for {request.platform} "
+                f"({request.role})."
+            ),
             platform=request.platform,
+            role=request.role,
             sources=[]
         )
 
-    # -------------------------
-    # BUILD CONTEXT
-    # -------------------------
-    context = "\n\n".join([d.page_content for d in docs])
+    # =========================
+    # CONTEXT
+    # =========================
+    context = "\n\n".join([
+        d.page_content
+        for d in docs
+    ])
 
-    # -------------------------
+    # =========================
     # SYSTEM PROMPT
-    # -------------------------
+    # =========================
     system_prompt = f"""
-You are a support assistant for {request.platform}.
+You are a support assistant for:
 
-Use ONLY the context below to answer.
+Platform: {request.platform}
+Role: {request.role}
 
-If the answer is not in the context, say you don't know.
+Use ONLY the provided context.
 
-Be clear and concise.
+If the answer is not found in the context,
+say you do not know.
+
+Be clear, concise, and accurate.
 
 CONTEXT:
 {context}
@@ -111,18 +177,25 @@ CONTEXT:
         HumanMessage(content=request.query)
     ]
 
+    # =========================
+    # GENERATE RESPONSE
+    # =========================
     result = llm.invoke(messages).content
 
-    # -------------------------
+    # =========================
     # SOURCES
-    # -------------------------
+    # =========================
     sources = list(set([
         d.metadata.get("source", "unknown")
         for d in docs
     ]))
 
+    # =========================
+    # RETURN RESPONSE
+    # =========================
     return ChatResponse(
         answer=result,
         platform=request.platform,
+        role=request.role,
         sources=sources
     )
