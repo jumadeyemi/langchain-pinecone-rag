@@ -1,97 +1,228 @@
-#import streamlit
-import streamlit as st
+# =========================
+# IMPORTS
+# =========================
 import os
+import streamlit as st
 from dotenv import load_dotenv
 
-# import pinecone
-from pinecone import Pinecone, ServerlessSpec
+# Pinecone
+from pinecone import Pinecone
 
-# import langchain
+# LangChain
 from langchain_pinecone import PineconeVectorStore
 from langchain_openai import OpenAIEmbeddings
 from langchain_openai import ChatOpenAI
-from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
 
+from langchain_core.messages import (
+    HumanMessage,
+    AIMessage,
+    SystemMessage
+)
+
+# =========================
+# LOAD ENV VARIABLES
+# =========================
 load_dotenv()
 
-st.title("BEERTECH AI SUPPORT ASSISTANT")
+# =========================
+# STREAMLIT PAGE CONFIG
+# =========================
+st.set_page_config(
+    page_title="BEERTECH AI SUPPORT ASSISTANT",
+    page_icon="🤖",
+    layout="wide"
+)
 
-# initialize pinecone database
-pc = Pinecone(api_key=os.environ.get("PINECONE_API_KEY"))
+st.title("🤖 BEERTECH AI SUPPORT ASSISTANT")
 
-# initialize pinecone database
-index_name = os.environ.get("PINECONE_INDEX_NAME")  # change if desired
+# =========================
+# PLATFORM SELECTOR
+# =========================
+platform = st.sidebar.selectbox(
+    "Select Platform",
+    [
+        "kujaexpress",
+        "kujashop",
+        "kujadrivers"
+    ]
+)
+
+# =========================
+# INITIALIZE PINECONE
+# =========================
+pc = Pinecone(
+    api_key=os.environ.get("PINECONE_API_KEY")
+)
+
+index_name = os.environ.get("PINECONE_INDEX_NAME")
+
 index = pc.Index(index_name)
 
-# initialize embeddings model + vector store
-embeddings = OpenAIEmbeddings(model="text-embedding-3-large",api_key=os.environ.get("OPENAI_API_KEY"))
-vector_store = PineconeVectorStore(index=index, embedding=embeddings)
+# =========================
+# EMBEDDINGS + VECTOR STORE
+# =========================
+embeddings = OpenAIEmbeddings(
+    model="text-embedding-3-large",
+    api_key=os.environ.get("OPENAI_API_KEY")
+)
 
-# initialize chat history
+vector_store = PineconeVectorStore(
+    index=index,
+    embedding=embeddings
+)
+
+# =========================
+# INITIALIZE CHAT HISTORY
+# =========================
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-    st.session_state.messages.append(SystemMessage("You are an assistant for question-answering tasks. "))
-
-# display chat messages from history on app rerun
+# =========================
+# DISPLAY CHAT HISTORY
+# =========================
 for message in st.session_state.messages:
+
     if isinstance(message, HumanMessage):
         with st.chat_message("user"):
             st.markdown(message.content)
+
     elif isinstance(message, AIMessage):
         with st.chat_message("assistant"):
             st.markdown(message.content)
 
-# create the bar where we can type messages
-prompt = st.chat_input("How are you?")
+# =========================
+# USER INPUT
+# =========================
+prompt = st.chat_input("Ask a question about the platform...")
 
-# did the user submit a prompt?
+# =========================
+# HANDLE USER INPUT
+# =========================
 if prompt:
 
-    # add the message from the user (prompt) to the screen with streamlit
+    # Display user message
     with st.chat_message("user"):
         st.markdown(prompt)
 
-        st.session_state.messages.append(HumanMessage(prompt))
+    # Save user message
+    st.session_state.messages.append(
+        HumanMessage(prompt)
+    )
 
-    # initialize the llm
+    # =========================
+    # INITIALIZE LLM
+    # =========================
     llm = ChatOpenAI(
         model="gpt-4o",
-        temperature=1
+        temperature=0
     )
 
-    # creating and invoking the retriever
+    # =========================
+    # CREATE RETRIEVER
+    # =========================
     retriever = vector_store.as_retriever(
         search_type="similarity_score_threshold",
-        search_kwargs={"k": 3, "score_threshold": 0.5},
+        search_kwargs={
+            "k": 5,
+            "score_threshold": 0.6,
+            "filter": {
+                "platform": platform
+            }
+        },
     )
 
+    # =========================
+    # RETRIEVE DOCUMENTS
+    # =========================
     docs = retriever.invoke(prompt)
-    docs_text = "".join(d.page_content for d in docs)
 
-    # creating the system prompt
-    system_prompt = """You are an assistant for question-answering tasks. 
-    Use the following pieces of retrieved context to answer the question. 
-    If you don't know the answer, just say that you don't know. 
-    Use three sentences maximum and keep the answer concise.
-    Context: {context}:"""
+    # =========================
+    # HANDLE NO RESULTS
+    # =========================
+    if not docs:
 
-    # Populate the system prompt with the retrieved context
-    system_prompt_fmt = system_prompt.format(context=docs_text)
+        result = (
+            f"I could not find relevant information "
+            f"for '{platform}' in the knowledge base."
+        )
 
+    else:
 
-    print("-- SYS PROMPT --")
-    print(system_prompt_fmt)
+        # =========================
+        # PREPARE CONTEXT
+        # =========================
+        docs_text = "\n\n".join(
+            doc.page_content for doc in docs
+        )
 
-    # adding the system prompt to the message history
-    st.session_state.messages.append(SystemMessage(system_prompt_fmt))
+        # =========================
+        # SYSTEM PROMPT
+        # =========================
+        system_prompt = f"""
+        You are a support assistant for {platform}.
 
-    # invoking the llm
-    result = llm.invoke(st.session_state.messages).content
+        Answer ONLY using the provided context.
 
-    # adding the response from the llm to the screen (and chat)
+        If the answer is not in the context,
+        say you could not find the information
+        in the knowledge base.
+
+        Be concise, clear, and accurate.
+
+        If applicable, provide step-by-step guidance.
+
+        CONTEXT:
+        {docs_text}
+        """
+
+        # =========================
+        # LAST FEW MESSAGES ONLY
+        # =========================
+        recent_messages = st.session_state.messages[-6:]
+
+        # =========================
+        # CREATE MESSAGE LIST
+        # =========================
+        messages_for_llm = [
+            SystemMessage(content=system_prompt),
+            *recent_messages
+        ]
+
+        # =========================
+        # GENERATE RESPONSE
+        # =========================
+        result = llm.invoke(
+            messages_for_llm
+        ).content
+
+    # =========================
+    # DISPLAY RESPONSE
+    # =========================
     with st.chat_message("assistant"):
+
         st.markdown(result)
 
-        st.session_state.messages.append(AIMessage(result))
+        # Show sources
+        if docs:
 
+            st.markdown("---")
+            st.markdown("### Sources")
+
+            shown_sources = set()
+
+            for doc in docs:
+
+                source = doc.metadata.get("source")
+
+                if source not in shown_sources:
+
+                    st.caption(f"📄 {source}")
+
+                    shown_sources.add(source)
+
+    # =========================
+    # SAVE AI RESPONSE
+    # =========================
+    st.session_state.messages.append(
+        AIMessage(result)
+    )
