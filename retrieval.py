@@ -9,12 +9,16 @@ from pinecone import Pinecone
 
 # LangChain
 from langchain_pinecone import PineconeVectorStore
-from langchain_openai import OpenAIEmbeddings
+
 
 # =========================
 # LOAD ENV VARIABLES
 # =========================
 load_dotenv()
+import asimov_config
+
+# LangChain imports that depend on OpenAI env must come after Asimov config
+from langchain_openai import OpenAIEmbeddings
 
 # =========================
 # INITIALIZE PINECONE
@@ -30,7 +34,7 @@ index = pc.Index(index_name)
 # EMBEDDINGS
 # =========================
 embeddings = OpenAIEmbeddings(
-    model="text-embedding-3-large",
+    model=os.environ.get("EMBEDDING_MODEL", "openai/text-embedding-3-large"),
     api_key=os.environ.get("OPENAI_API_KEY")
 )
 
@@ -43,7 +47,7 @@ vector_store = PineconeVectorStore(
 # TEST PARAMETERS
 # =========================
 platform = "kujashop"
-role = "customer"
+role = "pocs"
 
 query = "How do I place an order?"
 
@@ -54,7 +58,7 @@ retriever = vector_store.as_retriever(
     search_type="similarity_score_threshold",
     search_kwargs={
         "k": 5,
-        "score_threshold": 0.6,
+        "score_threshold": 0.5,
         "filter": {
             "platform": platform,
             "role": role

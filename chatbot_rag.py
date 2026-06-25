@@ -10,10 +10,7 @@ from pinecone import Pinecone
 
 # LangChain
 from langchain_pinecone import PineconeVectorStore
-from langchain_openai import (
-    OpenAIEmbeddings,
-    ChatOpenAI
-)
+
 
 from langchain_core.messages import (
     HumanMessage,
@@ -25,6 +22,14 @@ from langchain_core.messages import (
 # LOAD ENV VARIABLES
 # =========================
 load_dotenv()
+
+import asimov_config
+
+# LangChain imports that depend on OpenAI env must come after Asimov config
+from langchain_openai import (
+    OpenAIEmbeddings,
+    ChatOpenAI
+)
 
 # =========================
 # STREAMLIT PAGE CONFIG
@@ -42,14 +47,19 @@ st.title("🤖 BEERTECH AI SUPPORT ASSISTANT")
 # =========================
 platform_roles = {
     "kujashop": [
-        "customer",
-        "bdr"
+        "bdr",
+        "bulkbreaker",
+        "pocs"
     ],
     "kujaexpress": [
         "stockist"
     ],
     "kujadrivers": [
         "driver"
+    ],
+    "kujaerp": [
+        "admin",
+        "distributor"
     ]
 }
 
@@ -85,7 +95,7 @@ index = pc.Index(index_name)
 # EMBEDDINGS + VECTOR STORE
 # =========================
 embeddings = OpenAIEmbeddings(
-    model="text-embedding-3-large",
+    model="openai/text-embedding-3-large",
     api_key=os.environ.get("OPENAI_API_KEY")
 )
 
@@ -180,7 +190,7 @@ if prompt:
     # INITIALIZE LLM
     # =========================
     llm = ChatOpenAI(
-        model="gpt-4o",
+        model=os.environ.get("LLM_MODEL", "openai/gpt-4o"),
         temperature=0
     )
 

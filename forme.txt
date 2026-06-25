@@ -1,9 +1,7 @@
-deactivate
-rm -rf venv
-which python3.10
-/usr/bin/python3.10 -m venv venv
-
 source venv/bin/activate
+
+python3 ingestion.py
+python3 retrieval.py
 
 streamlit run chatbot_rag.py
 OR

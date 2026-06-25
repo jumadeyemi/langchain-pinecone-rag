@@ -8,10 +8,14 @@ from pinecone import Pinecone, ServerlessSpec
 
 # import langchain
 from langchain_pinecone import PineconeVectorStore
-from langchain_openai import OpenAIEmbeddings
-from langchain_core.documents import Document
+
 
 load_dotenv() 
+import asimov_config
+
+# LangChain imports that depend on OpenAI env must come after Asimov config
+from langchain_openai import OpenAIEmbeddings
+from langchain_core.documents import Document
 
 pc = Pinecone(api_key=os.environ.get("PINECONE_API_KEY"))
 
@@ -34,7 +38,7 @@ if index_name not in existing_indexes:
 index = pc.Index(index_name)
 
 # initialize embeddings model + vector store
-embeddings = OpenAIEmbeddings(model="text-embedding-3-large",api_key=os.environ.get("OPENAI_API_KEY"))
+embeddings = OpenAIEmbeddings(model=os.environ.get("EMBEDDING_MODEL", "text-embedding-3-large"), api_key=os.environ.get("OPENAI_API_KEY"))
 
 vector_store = PineconeVectorStore(index=index, embedding=embeddings)
 

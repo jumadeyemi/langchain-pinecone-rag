@@ -1,1 +1,53 @@
-as a bdr where can i see outlets with open orders on kuja shop
+{
+  "query": "I have excess stock, How do I return to the distributor's warehouse?",
+  "platform": "kujadrivers",
+   "role": "driver"
+}
+{
+  "query": " How will i see a list of all Distributors registered in KUJA?",
+  "platform": "kujaerp",
+   "role": "admin"
+}
+{
+  "query": "How  do i  replenish  a  driver's  van?",
+  "platform": "kujaerp",
+   "role": "distributor"
+}
+{
+  "query": "How do I view all stocks and alerts?",
+  "platform": "kujaexpress",
+   "role": "stockist"
+}
+{
+  "query": "How do i reorder the same products on a previous order ?",
+  "platform": "kujashop",
+   "role": "bdr"
+}
+{
+  "query": "How do I reorder a cancelled order?",
+  "platform": "kujashop",
+   "role": "bulkbreaker"
+}
+{
+  "query": "How do I get my order summary?",
+  "platform": "kujashop",
+   "role": "pocs"
+}
+
+
+
+
+"kujashop": [
+        "bdr",
+        "bulkbreaker",
+        "pocs"
+    ],
+    "kujaexpress": [
+        "stockist"
+    ],
+    "kujadrivers": [
+        "driver"
+    ],
+    "kujaerp": [
+        "admin",
+        "distributor"]

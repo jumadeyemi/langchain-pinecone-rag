@@ -15,10 +15,7 @@ from pinecone import Pinecone
 
 # LangChain
 from langchain_pinecone import PineconeVectorStore
-from langchain_openai import (
-    OpenAIEmbeddings,
-    ChatOpenAI
-)
+
 
 from langchain_core.messages import (
     SystemMessage,
@@ -29,6 +26,13 @@ from langchain_core.messages import (
 # LOAD ENV VARIABLES
 # =========================
 load_dotenv()
+import asimov_config
+
+# LangChain imports that depend on OpenAI env must come after Asimov config
+from langchain_openai import (
+    OpenAIEmbeddings,
+    ChatOpenAI
+)
 
 # =========================
 # FASTAPI APP
@@ -51,7 +55,7 @@ index = pc.Index(index_name)
 # EMBEDDINGS
 # =========================
 embeddings = OpenAIEmbeddings(
-    model="text-embedding-3-large",
+    model="openai/text-embedding-3-large",
     api_key=os.environ.get("OPENAI_API_KEY")
 )
 
@@ -64,7 +68,7 @@ vector_store = PineconeVectorStore(
 # LLM
 # =========================
 llm = ChatOpenAI(
-    model="gpt-4o",
+    model=os.environ.get("LLM_MODEL", "openai/gpt-4o"),
     temperature=0
 )
 
@@ -75,13 +79,19 @@ class Platform(str, Enum):
     kujashop = "kujashop"
     kujaexpress = "kujaexpress"
     kujadrivers = "kujadrivers"
+    kujaerp = "kujaerp"
 
 
 class Role(str, Enum):
-    customer = "customer"
-    bdr = "bdr"
-    stockist = "stockist"
     driver = "driver"
+    admin = "admin"
+    distributor = "distributor"
+    stockist = "stockist"
+    bdr = "bdr"
+    bulkbreaker = "bulkbreaker"
+    pocs = "pocs"
+    
+    
 
 # =========================
 # REQUEST MODEL

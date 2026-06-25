@@ -5,6 +5,11 @@ import os
 import time
 import glob
 from pathlib import Path
+try:
+    from PyPDF2 import PdfReader
+except Exception:
+    PdfReader = None
+    print("PyPDF2 is not installed. Install it with: pip install PyPDF2")
 from dotenv import load_dotenv
 
 # Pinecone
@@ -12,14 +17,18 @@ from pinecone import Pinecone, ServerlessSpec
 
 # LangChain
 from langchain_pinecone import PineconeVectorStore
-from langchain_openai import OpenAIEmbeddings
-from langchain_core.documents import Document
-from langchain_text_splitters import RecursiveCharacterTextSplitter
+
 
 # =========================
 # LOAD ENV VARIABLES
 # =========================
 load_dotenv()
+import asimov_config
+
+# LangChain imports that depend on OpenAI env must come after Asimov config
+from langchain_openai import OpenAIEmbeddings
+from langchain_core.documents import Document
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 # =========================
 # INITIALIZE PINECONE
@@ -62,7 +71,7 @@ index = pc.Index(index_name)
 # EMBEDDINGS + VECTOR STORE
 # =========================
 embeddings = OpenAIEmbeddings(
-    model="text-embedding-3-large",
+    model=os.environ.get("EMBEDDING_MODEL", "openai/text-embedding-3-large"),
     api_key=os.environ.get("OPENAI_API_KEY")
 )
 
@@ -76,27 +85,41 @@ vector_store = PineconeVectorStore(
 # =========================
 raw_documents = []
 
-txt_paths = glob.glob(
-    "data/**/*.txt",
-    recursive=True
+# collect both .txt and .pdf files
+file_paths = glob.glob("data/**/*.txt", recursive=True) + glob.glob(
+    "data/**/*.pdf", recursive=True
 )
+file_paths = sorted(file_paths)
 
-for path in txt_paths:
+for path in file_paths:
 
     path_obj = Path(path)
 
     # Example:
-    # data/kujashop/customer/file.txt
+    # data/kujashop/customer/file.pdf
     #
     # parts:
-    # [data, kujashop, customer, file.txt]
+    # [data, kujashop, customer, file.pdf]
 
     platform = path_obj.parts[1]
     role = path_obj.parts[2]
     source = path_obj.name
 
-    with open(path, "r", encoding="utf-8") as f:
-        text = f.read()
+    text = ""
+
+    if path_obj.suffix.lower() == ".pdf":
+        try:
+            reader = PdfReader(path)
+            for page in reader.pages:
+                page_text = page.extract_text()
+                if page_text:
+                    text += page_text + "\n"
+        except Exception as e:
+            print(f"Failed to read PDF {path}: {e}")
+            continue
+    else:
+        with open(path, "r", encoding="utf-8") as f:
+            text = f.read()
 
     raw_documents.append(
         Document(
@@ -104,7 +127,7 @@ for path in txt_paths:
             metadata={
                 "platform": platform,
                 "role": role,
-                "source": source
+                "source": source,
             }
         )
     )
