@@ -18,6 +18,72 @@ from langchain_core.messages import (
     SystemMessage
 )
 
+
+def is_small_talk(query: str) -> bool:
+    """Detect casual greetings and small talk."""
+    normalized = query.strip().lower()
+    if not normalized:
+        return False
+
+    small_talk_keywords = [
+        "hello",
+        "hi",
+        "hey",
+        "how are you",
+        "how's it going",
+        "whats up",
+        "good morning",
+        "good afternoon",
+        "good evening",
+        "thank you",
+        "thanks",
+        "bye",
+        "goodbye",
+        "how are you doing",
+        "what's up"
+    ]
+
+    return any(keyword in normalized for keyword in small_talk_keywords)
+
+
+def is_general_fallback(query: str) -> bool:
+    """Allow general conversational or factual queries when no KB docs are found."""
+    normalized = query.strip().lower()
+    if not normalized:
+        return False
+
+    if is_small_talk(normalized):
+        return True
+
+    product_keywords = [
+        "kuja",
+        "product",
+        "stock",
+        "order",
+        "van",
+        "distributor",
+        "warehouse",
+        "replenish",
+        "replenishment",
+        "dashboard",
+        "alert",
+        "login",
+        "sign up",
+        "signup",
+        "payment",
+        "invoice",
+        "delivery",
+        "customer",
+        "return",
+        "cancel",
+        "route",
+        "sales",
+        "app",
+        "platform"
+    ]
+
+    return not any(keyword in normalized for keyword in product_keywords)
+
 # =========================
 # LOAD ENV VARIABLES
 # =========================
@@ -219,11 +285,25 @@ if prompt:
     # =========================
     if not docs:
 
-        result = (
-            f"I could not find relevant information "
-            f"for role '{role}' "
-            f"on platform '{platform}'."
-        )
+        if is_general_fallback(prompt):
+            fallback_prompt = (
+                "You are a friendly support assistant. "
+                "Answer greetings, casual conversation, and general factual questions naturally. "
+                "If the user asks about KUJA product workflows or platform-specific actions and you have no knowledge base context, say you do not have that information. "
+                "Keep the reply short and polite."
+            )
+
+            result = llm.invoke([
+                SystemMessage(content=fallback_prompt),
+                HumanMessage(content=prompt)
+            ]).content
+
+        else:
+            result = (
+                f"I could not find relevant information "
+                f"for role '{role}' "
+                f"on platform '{platform}'."
+            )
 
     else:
 
